@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha --reporter spec"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ironikart/html-tokeniser.git"
+  },
   "devDependencies": {
     "chai": "^2.1.0",
     "mocha": "^2.1.0",
