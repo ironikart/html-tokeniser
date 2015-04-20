@@ -1,0 +1,22 @@
+{
+  "name": "html-tokeniser",
+  "version": "0.0.1",
+  "description": "HTML tokeniser that supports streaming interfaces. Converts HTML into tokens using HTMLParser2 and provides a way to convert those tokens back into a HTML string.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0",
+    "rimraf": "^2.3.0"
+  },
+  "author": "Anthony Barnes",
+  "license": "MIT",
+  "dependencies": {
+    "htmlparser2": "^3.8.2"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  }
+}
