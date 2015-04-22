@@ -50,4 +50,13 @@ describe('Tokeniser', function() {
         done();
       });
   });
+
+  it('can convert tokens ad hoc by exposing a conversion function', function (done) {
+    var token = {
+      type: 'comment',
+      content: ' This is a comment '
+    };
+    expect(t.toHTML.convertTokenToHTML(token)).to.equal('<!-- This is a comment -->');
+    done();
+  });
 });
