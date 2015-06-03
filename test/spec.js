@@ -59,4 +59,17 @@ describe('Tokeniser', function() {
     expect(t.toHTML.convertTokenToHTML(token)).to.equal('<!-- This is a comment -->');
     done();
   });
+
+  it('can force a self closing tag when the token is configured', function (done) {
+    var token = {
+      type: 'open',
+      name: 'script',
+      attr: {
+        src: 'http://path/to.js'
+      },
+      selfClose: true
+    };
+    expect(t.toHTML.convertTokenToHTML(token)).to.equal('<script src="http://path/to.js" />');
+    done();
+  });
 });
