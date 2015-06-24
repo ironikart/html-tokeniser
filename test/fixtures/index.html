@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{name}} - (version {{version}})</title>
+        <!-- import:content src/templates/fragments/head.html -->
+        <!-- build:sass styles/main.css -->
+
+        <!-- endbuild -->
+    </head>
+    <!--[if IE 9]><body class="no-js ie9"><![endif]-->
+    <!--[if gt IE 9]><!-->
+    <body class="no-js">
+    <!--<![endif]-->
+        <div id="page-wrapper">
+        <!--noindex-->
+
+        <!--endnoindex-->
+        <!-- start main-content -->
+        <main class="main" id="main">
+            {{content}}
+            <p>Paragraph</p>
+            <span>Spans</span>
+            <input type="text" value="value" />
+            <h1>Heading</h1>
+        </main><!-- /.main -->
+        <!-- end main-content -->
+        <!--noindex-->
+
+        <!--endnoindex-->
+        </div><!-- /#page-wrapper -->
+<!-- import:js src/js/global.js -->
+    </body>
+</html>
