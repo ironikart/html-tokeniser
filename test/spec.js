@@ -59,8 +59,7 @@ describe('Tokeniser', function() {
         this.push(token);
         cb();
       }))
-      // Without resuming this stream remains frozen in time
-      // @todo - investigate
+      // Resume because we aren't piping to a writeable stream
       .resume()
       .on('finish', function() {
         expect(tokens.length).to.equal(71);
