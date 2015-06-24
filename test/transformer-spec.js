@@ -104,7 +104,6 @@ describe('Transformer', function() {
             // Test cached transform data
             var cachedToken = this.transformer.cache.get(' build:sass styles/main.css ');
             var keys = this.transformer.cache.keys();
-
             expect(cachedToken).not.to.equal(undefined).and.not.to.equal(null);
             expect(keys).to.contain(tokenContent);
             expect(keys.length).to.equal(3);
@@ -130,9 +129,6 @@ describe('Transformer', function() {
             .resume()
             .on('end', function() {
                 directiveCount.should.equal(2); // 2 single level tags
-                var stats = this.transformer.cache.getStats();
-                // Hits should be the number of tranformations + 1 (including the build:) from the previous test
-                expect(stats.hits).to.equal(3 + 1);
                 done();
             }.bind(this));
     });
