@@ -1,0 +1,35 @@
+<!-- build:sass dist:styles/main.css -->
+    <!-- build:css tmp:styles/global.scss -->
+        <!-- import:css source:styles/global.scss -->
+        <!-- import:css module:**/css/variables.scss -->
+        <!-- import:content module:**/import/_css.html -->
+        <!-- import:css module:**/css/global.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/small-screen-only.scss { "media": "(max-width: 47.9375em)" } -->
+        <!-- import:css source:styles/small-screen-only.scss -->
+        <!-- import:css module:**/css/small-screen-only.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/med-screen-only.scss { "media": "(max-width: 59.9375em)" } -->
+        <!-- import:css source:styles/med-screen-only.scss -->
+        <!-- import:css module:**/css/med-screen-only.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/medium.scss { "media": "(min-width: 48em)" } -->
+        <!-- import:css source:styles/medium.scss -->
+        <!-- import:css module:**/css/medium.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/wide.scss { "media": "(min-width: 60em)" } -->
+        <!-- import:css source:styles/wide.scss -->
+        <!-- import:css module:**/css/wide.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/extra-wide.scss { "media": "(min-width: 96.25em)" } -->
+        <!-- import:css source:styles/extra-wide.scss -->
+        <!-- import:css module:**/css/extra-wide.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/print.scss { "media": "print" } -->
+        <!-- import:css source:styles/print.scss -->
+        <!-- import:css module:**/css/print.scss -->
+    <!-- endbuild -->
+    <!-- build:css tmp:styles/background.scss -->
+        <!-- import:css source:styles/imports/background.scss -->
+    <!-- endbuild -->
+<!-- endbuild -->

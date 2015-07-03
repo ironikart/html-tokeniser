@@ -130,7 +130,7 @@ describe('Transformer', function() {
             .on('end', function() {
                 directiveCount.should.equal(2); // 2 single level tags
                 done();
-            }.bind(this));
+            });
     });
 
     it('can enact transformations on arbitrary matching functions', function(done) {
@@ -174,5 +174,21 @@ describe('Transformer', function() {
             );
             done();
           });
+    });
+
+    it('can handled complex nesting of blocks', function(done) {
+        var complexNested = path.join(__dirname, 'fixtures', 'complex-nesting.html');
+        fs.createReadStream(complexNested)
+          .pipe(t.tokeniser())
+          .pipe(this.transformer({
+            start:     /^\s*?build:sass\s+([^\s]+)/,
+            nestStart: /^\s*?build:/,
+            end:       /^\s*endbuild\s*$/,
+            isBlock:   true,
+            handler:   function (block, cb) {
+                expect(block.tokens.length).to.be.equal(59);
+                done();
+            }
+          }));
     });
 });
