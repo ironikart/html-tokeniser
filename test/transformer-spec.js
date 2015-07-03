@@ -176,7 +176,37 @@ describe('Transformer', function() {
           });
     });
 
-    it('can handled complex nesting of blocks', function(done) {
+    it('can handle simple nesting of blocks sharing the same functionality', function(done) {
+        var simpleNested = path.join(__dirname, 'fixtures', 'simple-nesting.html');
+        var calls = [];
+        fs.createReadStream(simpleNested)
+          .pipe(t.tokeniser())
+          .pipe(this.transformer({
+            start:   /^\s*?build:sass\s+([^\s]+)/,
+            end:     /^\s*endbuild\s*$/,
+            isBlock: true,
+            handler: function (block, cb) {
+                calls.push(block);
+                cb(null, {
+                    type: 'open',
+                    name: 'link',
+                    attr: {
+                        href: block.matches[1],
+                        rel:  'stylesheet'
+                    },
+                    selfClosing: true
+                });
+                if (calls.length === 2) {
+                    expect(calls[0].tokens[1].content).to.be.equal(' import:css source:styles/global.scss ');
+                    expect(calls[1].tokens[1].attr.href).to.be.equal('tmp:styles/global.scss');
+                    expect(calls[1].tokens[3].content).to.be.equal(' import:css source:styles/medium.scss ');
+                    done();
+                }
+            }
+        }));
+    });
+
+    it('can handled complex nesting of blocks with different functionality', function(done) {
         var complexNested = path.join(__dirname, 'fixtures', 'complex-nesting.html');
         fs.createReadStream(complexNested)
           .pipe(t.tokeniser())
@@ -187,6 +217,7 @@ describe('Transformer', function() {
             isBlock:   true,
             handler:   function (block, cb) {
                 expect(block.tokens.length).to.be.equal(59);
+                cb(null, []);
                 done();
             }
           }));
