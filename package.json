@@ -4,7 +4,8 @@
   "description": "HTML tokeniser that supports streaming interfaces. Converts HTML into tokens and provides options to transforma and convert those tokens back into a HTML string.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "postinstall": "mkdir -p test/.tmp"
   },
   "repository": {
     "type": "git",

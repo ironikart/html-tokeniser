@@ -15,16 +15,6 @@ describe('Transformer', function() {
     var expected = path.join(__dirname, 'expected');
     var tmpDir = path.resolve(__dirname, '.tmp');
 
-    before(function(done) {
-        rimraf(tmpDir, function() {
-            fs.mkdir(tmpDir, done);
-        });
-    });
-
-    after(function(done) {
-        rimraf(tmpDir, done);
-    });
-
     it('can be required without throwing', function () {
         this.transformer = require(path.resolve(__dirname, '../', 'lib/transform'));
     });

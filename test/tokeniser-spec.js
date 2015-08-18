@@ -1,4 +1,4 @@
-/*global describe, it */
+/*global describe, it, before */
 'use strict';
 var fs = require('fs');
 var path = require('path');
@@ -11,7 +11,8 @@ chai.should();
 
 var files = {
   basic: path.resolve(__dirname, './fixtures/basic.html'),
-  index: path.resolve(__dirname, './fixtures/index.html')
+  index: path.resolve(__dirname, './fixtures/index.html'),
+  chars: path.resolve(__dirname, './fixtures/characters.html')
 };
 
 describe('Tokeniser', function() {
@@ -76,6 +77,24 @@ describe('Tokeniser', function() {
       .on('data', function(data) {
         html += data;
       })
+      .on('finish', function() {
+        // Resulting HTML should be the same as the original content
+        expect(content).to.equal(html);
+        done();
+      });
+  });
+
+  it('leaves characters intact', function (done) {
+    var content = fs.readFileSync(files.chars, {encoding: 'utf8'});
+    var html = '';
+    fs.createReadStream(files.chars)
+      .pipe(t.tokeniser())
+      .pipe(t.toHTML())
+      .on('data', function(data) {
+        html += data;
+      })
+      // Write out the file so we can inspect it manually
+      .pipe(fs.createWriteStream(path.resolve(__dirname, '.tmp', 'characters.html')))
       .on('finish', function() {
         // Resulting HTML should be the same as the original content
         expect(content).to.equal(html);
