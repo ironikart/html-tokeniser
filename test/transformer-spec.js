@@ -216,7 +216,7 @@ describe('Transformer', function() {
             end:       /^\s*endbuild\s*$/,
             isBlock:   true,
             handler:   function (block, cb) {
-                expect(block.tokens.length).to.be.equal(59);
+                expect(block.tokens.length).to.be.equal(67);
                 cb(null, []);
                 done();
             }
