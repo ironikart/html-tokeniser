@@ -1,11 +1,10 @@
 {
   "name": "html-tokeniser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTML tokeniser that supports streaming interfaces. Converts HTML into tokens and provides options to transforma and convert those tokens back into a HTML string.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
-    "postinstall": "mkdir -p test/.tmp"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
